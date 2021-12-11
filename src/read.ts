@@ -10,7 +10,7 @@ export default function read(
   schemas?: yaml.Schema[]
 ): any {
   const cwd = path.dirname(input);
-  const src = fs.readFileSync(input, 'utf8');
+  const src = fs.readFileSync(input + '.yml', 'utf8');
 
   const opts = Object.assign({ safe: true }, options);
 
