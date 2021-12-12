@@ -1,4 +1,3 @@
-import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import getSchema from './get-schema';
@@ -6,10 +5,11 @@ import { IOptions } from './types';
 
 export default function read(
   input: string,
-  options?: IOptions | null,
+  options: IOptions,
   schemas?: yaml.Schema[]
 ): any {
-  const cwd = path.dirname(input);
+  const cwd = options.path;
+
   const src = fs.readFileSync(input + '.yml', 'utf8');
 
   const opts = Object.assign({ safe: true }, options);
